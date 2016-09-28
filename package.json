@@ -4,8 +4,17 @@
   "description": "",
   "main": "server/main.js",
   "scripts": {
+    "start": "node server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect-timeout": "^1.7.0",
+    "express": "^4.14.0",
+    "joi": "^9.0.4",
+    "jsonwebtoken": "^7.1.9",
+    "morgan": "^1.7.0"
+  }
 }
