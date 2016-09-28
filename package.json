@@ -9,7 +9,10 @@
     "postinstall": "(cd server && typings install)",
     "typings": "exit 1"
   },
-  "author": "",
+  "author": {
+    "name": "Daniel Prado",
+    "email": "danielprado.ad@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -18,5 +21,15 @@
     "joi": "^9.0.4",
     "jsonwebtoken": "^7.1.9",
     "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.0",
+    "gulp-typescript": "^3.0.1",
+    "merge2": "^1.0.2",
+    "rimraf": "^2.5.4",
+    "typescript": "^2.0.3",
+    "typings": "^1.4.0"
   }
 }
