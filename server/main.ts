@@ -1,9 +1,9 @@
-import { express } from 'express';
+import * as express from 'express';
 
 var app = express();
 
-app.get('/', function(req, res) {
-  res.send('Ok');
+app.get('/', function(req: express.Request, res: express.Response) {
+  res.json('ok');
 });
 
 app.listen(3000, function() {
