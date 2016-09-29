@@ -3,6 +3,6 @@ const gulp = require('gulp'),
 
 const appPath = { src: 'app', dist: 'bin/www' };
 
-gulp.task('app-clean', cb => {
-  rimraf(`${appPath.dist}/**/*`, cb);
+gulp.task('app-clean', callback => {
+  rimraf(`${appPath.dist}/**/*`, callback);
 });
