@@ -1,4 +1,4 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('app').factory('loginService', [
@@ -13,10 +13,10 @@
   function LoginService(API, $http, $q, componentPage, Auth) {
     let loginPromise = null;
 
-    const openLogin = function () {
+    const openLogin = function() {
       if (!loginPromise) {
-        loginPromise = componentPage("appLoginComponent");
-        loginPromise.finally(_ => loginPromise = null);
+        loginPromise = componentPage('appLoginComponent');
+        loginPromise.finally(() => loginPromise = null);
       }
 
       return loginPromise;

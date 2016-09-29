@@ -1,7 +1,7 @@
 ((angular) => {
   'use strict';
 
-  angular.module('appInformative').controller("appInformative.formCtrl", [
+  angular.module('appInformative').controller('appInformative.formCtrl', [
     '$routeParams',
     '$location',
     'UI',
@@ -21,13 +21,13 @@
     }
 
     this.getFullMarkdown = () => {
-      let title = this.model.title ? "# " + this.model.title : "";
-      return `${title}\n\n\n${this.model.message || ""}`;
+      let title = this.model.title ? '# ' + this.model.title : '';
+      return `${title}\n\n\n${this.model.message || ''}`;
     };
 
     this.submit = () => {
-      UI.Loader(informativeService.save(this.model)).then((informative) => {
-        UI.Toast("Salvo");
+      UI.Loader(informativeService.save(this.model)).then(() => {
+        UI.Toast('Salvo');
         $location.path('/informativos');
       });
     };

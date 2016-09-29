@@ -1,7 +1,7 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
-  angular.module("app").directive("timepicker", [
+  angular.module('app').directive('timepicker', [
     '$compile',
     '$mdpTimePicker',
     'moment',
@@ -13,7 +13,7 @@
     return {
       restric: 'A',
       scope: {
-        ngModel: "="
+        ngModel: '='
       },
       priority: 1,
       replace: false,
@@ -42,4 +42,3 @@
 
 
 })(angular);
-

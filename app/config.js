@@ -9,7 +9,7 @@
     .config(['$mdThemingProvider', configTheme]);
 
   function configAuth($httpProvider) {
-      $httpProvider.interceptors.push('authInterceptor');
+    $httpProvider.interceptors.push('authInterceptor');
   }
 
   function configMaps(uiGmapGoogleMapApiProvider) {
@@ -25,16 +25,16 @@
   }
 
   function configErrorMessages(mdFormValidatorProvider) {
-      mdFormValidatorProvider.setMessage("required", "Obrigatório");
-      mdFormValidatorProvider.setMessage("date", "Data inválida");
-      mdFormValidatorProvider.setMessage("email", "Email inválido");
-      mdFormValidatorProvider.setMessage("min", "Deve ter ser no minimo {min}");
-      mdFormValidatorProvider.setMessage("max", "Deve ter ser no máximo {max}");
-      mdFormValidatorProvider.setMessage("md-maxlength", "Deve ter no máximo {md-maxlength} caracteres");
-      mdFormValidatorProvider.setMessage("minlength", "Deve ter no minimo {ng-minlength} caracteres");
+    mdFormValidatorProvider.setMessage('required', 'Obrigatório');
+    mdFormValidatorProvider.setMessage('date', 'Data inválida');
+    mdFormValidatorProvider.setMessage('email', 'Email inválido');
+    mdFormValidatorProvider.setMessage('min', 'Deve ter ser no minimo {min}');
+    mdFormValidatorProvider.setMessage('max', 'Deve ter ser no máximo {max}');
+    mdFormValidatorProvider.setMessage('md-maxlength', 'Deve ter no máximo {md-maxlength} caracteres');
+    mdFormValidatorProvider.setMessage('minlength', 'Deve ter no minimo {ng-minlength} caracteres');
   }
 
-  function configTheme($mdThemingProvider, $translateProvider) {
+  function configTheme($mdThemingProvider) {
 
     $mdThemingProvider.definePalette('customPrimary', {
       '50': '#6c8a99',

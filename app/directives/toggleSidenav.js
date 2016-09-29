@@ -10,10 +10,11 @@
       restrict: 'A',
       scope: false,
       link: ($scope, elem) => {
-        elem.click(_ => $mdSidenav('left').toggle());
+        elem.click(() => $mdSidenav('left').toggle());
       }
     };
 
   }
 
 })(angular);
+

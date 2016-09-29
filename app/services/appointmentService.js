@@ -24,7 +24,7 @@
     };
 
     const remove = (id) => {
-      return $http.post(endpoints.remove, { id });
+      return $http.post(`${API}/appointment/delete`, { id });
     };
 
     return { list, find, save, remove };

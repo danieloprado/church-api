@@ -1,21 +1,21 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
-  angular.module('appointment').controller("appointment.listCtrl", [
+  angular.module('appointment').controller('appointment.listCtrl', [
     'UI',
     'appointmentService',
     ListCtrl
   ]);
 
   function ListCtrl(UI, service) {
-    this.query = { order: "name" };
+    this.query = { order: 'name' };
 
     this.dataPromise = service.list().then(data => {
       this.appointments = data;
     });
 
     this.delete = ($event, appointment) => {
-      UI.Confirm(`Deseja apagar o evento **${appointment.title}**`, $event).then(_ => {
+      UI.Confirm(`Deseja apagar o evento **${appointment.title}**`, $event).then(() => {
         const index = this.appointments.indexOf(appointment);
         this.appointments.splice(index, 1);
 

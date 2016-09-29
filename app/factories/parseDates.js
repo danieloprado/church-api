@@ -1,13 +1,13 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
-  angular.module("app").factory("parseDates", [ParseDates]);
+  angular.module('app').factory('parseDates', [ParseDates]);
 
-  function ParseDates(){
+  function ParseDates() {
 
     return (obj, fields) => {
       if (!fields) {
-        fields = Object.keys(obj).filter(x => x.toLowerCase().indexOf("date") > -1);
+        fields = Object.keys(obj).filter(x => x.toLowerCase().indexOf('date') > -1);
       }
 
       fields.forEach(key => {

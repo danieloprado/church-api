@@ -6,7 +6,6 @@
   function Loader($q, $rootScope) {
 
     const promises = [];
-    const messages = [];
     let disabled = 0;
 
     const emitChange = () => {
@@ -53,3 +52,4 @@
   Loader.$inject = ['$q', '$rootScope'];
 
 })(angular);
+

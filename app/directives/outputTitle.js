@@ -1,14 +1,14 @@
 ((angular) => {
   'use strict';
 
-  angular.module('app').directive('appOutputTitle', ['$compile', Directive]);
+  angular.module('app').directive('appOutputTitle', [Directive]);
 
-  function Directive($compile) {
+  function Directive() {
 
     return {
       scope: false,
       link: ($scope, elem) => {
-        $scope.$on("change-page-title", (info, data) => elem.html(data));
+        $scope.$on('change-page-title', (info, data) => elem.html(data));
       }
     };
 

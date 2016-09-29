@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('appAuth')
-    .controller("appAuth.loginCtrl", [
+    .controller('appAuth.loginCtrl', [
       '$scope',
       '$mdDialog',
       '$location',
@@ -10,10 +10,10 @@
       'Loader',
       'authService',
       'loginService',
-      function($scope, $mdDialog, $location, Toast, Loader, Auth, LoginService) {
+      function($scope, $mdDialog, $location, toast, loader, Auth, LoginService) {
         $scope.model = {
-          email: "danieloprado@outlook.com",
-          password: "123"
+          email: 'danieloprado@outlook.com',
+          password: '123'
         };
 
         if (Auth.hasToken()) {
@@ -23,21 +23,21 @@
 
         $scope.changeUser = () => {
           $mdDialog.cancel();
-          LoginService.logout().then(_ => {
-            $location.path("/");
+          LoginService.logout().then(() => {
+            $location.path('/');
           });
         };
 
         $scope.submit = () => {
-          Loader(LoginService.login($scope.model))
+          loader(LoginService.login($scope.model))
             .then(() => $mdDialog.hide())
             .catch((res) => {
               switch (res.status) {
                 case 400:
-                  Toast(res.data.message);
+                  toast(res.data.message);
                   break;
                 default:
-                  Toast("Ocorreu um erro no servidor");
+                  toast('Ocorreu um erro no servidor');
               }
             });
         };

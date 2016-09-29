@@ -1,4 +1,4 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('app')
@@ -14,16 +14,16 @@
     };
 
     this.getToken = () => {
-      return $window.localStorage.getItem("token");
+      return $window.localStorage.getItem('token');
     };
 
     this.setToken = (token) => {
       if (!isValidToken(token)) return false;
-      $window.localStorage.setItem("token", token);
+      $window.localStorage.setItem('token', token);
     };
 
     this.removeToken = () => {
-      return $window.localStorage.removeItem("token");
+      return $window.localStorage.removeItem('token');
     };
 
     this.hasToken = () => {
@@ -37,3 +37,4 @@
   }
 
 })(angular);
+

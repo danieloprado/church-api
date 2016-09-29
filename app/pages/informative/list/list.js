@@ -1,8 +1,8 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('appInformative')
-    .controller("appInformative.listCtrl", [
+    .controller('appInformative.listCtrl', [
       '$scope',
       'UI',
       'informativeService',
@@ -11,7 +11,7 @@
 
   function ListCtrl($scope, UI, informativeService) {
     this.selected = [];
-    this.query = { order: "-date" };
+    this.query = { order: '-date' };
 
     this.dataPromise = informativeService.list().then((data) => {
       this.informatives = data;
@@ -29,3 +29,4 @@
   }
 
 })(angular);
+

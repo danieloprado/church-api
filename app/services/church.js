@@ -9,7 +9,7 @@
     AuthChurchService
   ]);
 
-  function AuthChurchService(API, $http, $mdDialog, Auth) {
+  function AuthChurchService(API, $http, $mdDialog) {
     let endpoints = {
       list: API + '/church/',
       selectChurch: API + '/auth/select-church'

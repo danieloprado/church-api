@@ -1,16 +1,16 @@
 (angular => {
   'use strict';
 
-  angular.module("app").factory("ComponentTemplate", ComponentTemplate);
+  angular.module('app').factory('ComponentTemplate', ComponentTemplate);
 
   function ComponentTemplate(lodash) {
     const resolveParams = (resolveItems) => {
-      if (!resolveItems) return "";
+      if (!resolveItems) return '';
 
       return Object.keys(resolveItems).reduce((acc, key) => {
-        acc.push(`${lodash.kebabCase(key)}="${key}"`);
+        acc.push(`${lodash.kebabCase(key)}='${key}'`);
         return acc;
-      }, []).join(" ");
+      }, []).join(' ');
 
     };
 
@@ -19,6 +19,6 @@
     };
 
   }
-  ComponentTemplate.$inject = ["lodash"];
+  ComponentTemplate.$inject = ['lodash'];
 
 })(angular);

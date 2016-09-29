@@ -1,16 +1,15 @@
 ((angular) => {
   'use strict';
 
-  angular.module('app')
-    .directive('appPlaceMaps', [IcbPlaceMaps]);
+  angular.module('app').directive('appPlaceMaps', [IcbPlaceMaps]);
 
   function IcbPlaceMaps() {
 
     return {
       restrict: 'E',
       scope: {
-        ngModel: "=",
-        placeholder: "@"
+        ngModel: '=',
+        placeholder: '@'
       },
       template: `
         <md-progress-circular
@@ -29,9 +28,9 @@
         </ui-gmap-google-map>
       `,
       controller: ['$scope', '$templateCache', '$q', '$timeout', 'lodash', 'UI', Controller],
-      link: ($scope, elem, attrs) => {
+      link: ($scope, elem) => {
 
-        $scope.$watch("ngModel", (v) => {
+        $scope.$watch('ngModel', (v) => {
           if (!v) return;
           elem.find('input[type=text]').val(v.address);
         }, true);
@@ -47,7 +46,7 @@
 
         elem.on('keypress keyup keydown', 'input[type=text]', ($event) => {
           const keyCode = $event.keyCode || $event.which;
-          if (keyCode == 13) {
+          if (keyCode === 13) {
             $event.preventDefault();
           }
         });
@@ -57,7 +56,7 @@
   }
 
   function Controller($scope, $templateCache, $q, $timeout, _, UI) {
-    $scope.placeholder = $scope.placeholder || "Pesquisar";
+    $scope.placeholder = $scope.placeholder || 'Pesquisar';
     $scope.ngModel = $scope.ngModel || {};
 
     const defaultLocation = {
@@ -84,10 +83,10 @@
       value.lng = value.lng || defaultLocation.lng;
 
       if (_.isEqual(value, {
-        lat: $scope.ngModel.lat,
-        lng: $scope.ngModel.lng,
-        address: $scope.ngModel.address
-      })) {
+          lat: $scope.ngModel.lat,
+          lng: $scope.ngModel.lng,
+          address: $scope.ngModel.address
+        })) {
         return;
       }
 
@@ -119,13 +118,13 @@
         draggable: true
       },
       events: {
-        dragend: function (marker, eventName, args) {
+        dragend: function(marker) {
           const deferred = $q.defer();
 
           (new google.maps.Geocoder()).geocode({
             location: marker.getPosition()
           }, (results, status) => {
-            if (status != google.maps.GeocoderStatus.OK) {
+            if (status !== google.maps.GeocoderStatus.OK) {
               deferred.reject(results);
               return;
             }
@@ -133,14 +132,14 @@
             deferred.resolve(results[0]);
           });
 
-          UI.Loader(deferred.promise).then((address) => {
+          UI.Loader(deferred.promise).then(address => {
             updateValue({
               lat: marker.getPosition().lat(),
               lng: marker.getPosition().lng(),
               address: address.formatted_address
             });
-          }).catch((error) => {
-            UI.Toast("Não foi possivel achar o endereço");
+          }).catch(() => {
+            UI.Toast('Não foi possivel achar o endereço');
           });
 
         }
@@ -157,7 +156,7 @@
           const places = searchBox.getPlaces();
 
           if (places.length === 0) {
-            UI.Toast("Não foi possivel achar o endereço");
+            UI.Toast('Não foi possivel achar o endereço');
             return;
           }
 
@@ -177,7 +176,7 @@
       }
     };
 
-    $scope.$watch("ngModel", (value) => {
+    $scope.$watch('ngModel', (value) => {
       if (!value) return;
 
       setCenter(value.lat, value.lng);

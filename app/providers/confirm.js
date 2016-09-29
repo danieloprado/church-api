@@ -7,13 +7,13 @@
 
     return (message, $event) => {
       const confirm = $mdDialog.confirm()
-        .title("Confirmar")
+        .title('Confirmar')
         .htmlContent(marked(message))
         .targetEvent($event)
         .ok('Sim')
         .cancel('Não');
 
-      return $mdDialog.show(confirm).catch(_ => $q.reject({ isConfirm: true }));
+      return $mdDialog.show(confirm).catch(() => $q.reject({ isConfirm: true }));
     };
 
   }
@@ -21,4 +21,3 @@
 
 
 })(angular);
-

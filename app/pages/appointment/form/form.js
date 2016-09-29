@@ -1,7 +1,7 @@
 ((angular) => {
   'use strict';
 
-  angular.module('appointment').controller("appointment.formCtrl", [
+  angular.module('appointment').controller('appointment.formCtrl', [
     '$filter',
     '$location',
     '$routeParams',
@@ -25,7 +25,7 @@
     }
 
     const toDate = (date, hour) => {
-      const parts = hour.split(":");
+      const parts = hour.split(':');
 
       date.setHours(parts[0]);
       date.setMinutes(parts[1]);
@@ -39,8 +39,8 @@
       data.beginDate = toDate(data.beginDate, data.beginTime);
       data.endDate = toDate(data.endDate, data.endTime);
 
-      UI.Loader(service.save(data)).then((event) => {
-        UI.Toast("Salvo");
+      UI.Loader(service.save(data)).then(() => {
+        UI.Toast('Salvo');
         $location.path('/agenda');
       }).catch(UI.Toast.httpHandler);
     };

@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('appChurch')
-    .controller("church.editCtrl", [
+    .controller('church.editCtrl', [
       '$scope',
       'uiGmapGoogleMapApi',
       'Loader',
@@ -11,19 +11,19 @@
       EditCtrl
     ]);
 
-  function EditCtrl($scope, uiGmapGoogleMapApi, Loader, Toast, service) {
-    $scope.$emit("change-page-title", "Igreja");
+  function EditCtrl($scope, uiGmapGoogleMapApi, loader, toast, service) {
+    $scope.$emit('change-page-title', 'Igreja');
     $scope.model = {};
 
-    Loader(service.current())
+    loader(service.current())
       .then((church) => {
         $scope.model = church;
       });
 
     $scope.submit = () => {
-      Loader(service.save($scope.model))
+      loader(service.save($scope.model))
         .then(() => {
-          Toast("Informações atualizadas");
+          toast('Informações atualizadas');
         });
     };
 

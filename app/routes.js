@@ -1,4 +1,4 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('app')
@@ -17,7 +17,7 @@
         controller: 'app.homeCtrl'
       })
       .otherwise({
-        redirectTo: "/"
+        redirectTo: '/'
       });
 
   }
