@@ -1,0 +1,70 @@
+doctype
+html(lang='en', ng-app='app')
+  head
+    meta(name='viewport', content='initial-scale=1')
+    meta(charset='UTF-8')
+    title ICB
+
+    link(rel='stylesheet', href='/css/libs.min.css')
+    link(rel='stylesheet', href='/css/app.css')
+
+    style.
+      .ng-cloak{ display: none }
+
+  body.ng-cloak(layout='column')
+    app-loader
+    app-component-page
+
+
+    div(layout="row", flex)
+      md-sidenav.md-sidenav-left.md-whiteframe-4dp(layout='column', md-component-id='left', md-is-locked-open="$mdMedia('gt-sm')")
+
+        header
+          div.logo
+            img(src="/imgs/logo.png")
+            p {{user.church}}
+
+          p {{user.firstName}}
+
+          md-menu(md-position-mode="target-right target")
+            md-button.md-icon-button(ng-click='$mdOpenMenu($event)')
+              md-icon(md-svg-icon='dots-vertical')
+            md-menu-content
+              md-menu-item
+                md-button(app-logout='')
+                  md-icon(md-svg-icon='logout')
+                  | Sair
+
+        nav.menu
+          md-button(ng-href="/", toggle-sidenav)
+            md-icon(md-svg-icon="chart-areaspline", size=24)
+            | Dashboard
+          md-button(ng-href="/agenda", toggle-sidenav)
+            md-icon(md-svg-icon="calendar", size=24)
+            | Agenda
+          md-button(ng-href="/informativos", toggle-sidenav)
+            md-icon(md-svg-icon="newspaper", size=24)
+            | Informativos
+          md-button(ng-href="/church", toggle-sidenav)
+            md-icon(md-svg-icon="church", size=24)
+            | Igreja
+
+      #main(layout='column', flex, ng-class="{ 'main-tabs-header': headerTabs.tabs.length > 0 }")
+        div
+          md-toolbar.main-toolbar(layout='row')
+            .md-toolbar-tools
+              md-button.md-icon-button(hide-gt-sm='', toggle-sidenav)
+                md-icon(md-svg-icon="menu", size=24)
+
+              h1(app-output-title)
+
+          md-toolbar(ng-show="headerTabs.tabs.length > 0")
+            md-tabs(md-selected="headerTabs.current")
+              md-tab(ng-repeat="text in headerTabs.tabs") {{text}}
+
+        md-content.scroll-y(layout-padding,md-scroll-y)
+          ng-view.main-content
+
+    script(src='/js/libs.min.js')
+    script(src='/js/all.min.js')
+    script(src='/js/templates.min.js')

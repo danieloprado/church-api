@@ -1,0 +1,39 @@
+.p-l-md {
+  padding-left: 20px;
+}
+
+.p-t-md {
+  padding-top: 20px;
+}
+
+.p-b-sm {
+  padding-bottom: 10px;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.m-input {
+  margin-top: 19px !important;
+}
+
+.text-danger-hover {
+  transition: .5s;
+
+  &:hover {
+    color: $danger !important;
+  }
+}
+
+.no-record {
+  opacity: .8;
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  &:before,
+  &:after {
+    content: ' - ';
+  }
+}

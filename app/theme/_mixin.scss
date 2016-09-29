@@ -1,0 +1,37 @@
+@mixin transition($propriedade: all, $tempo: .3s, $ease: ease-in-out, $delay: 0s) {
+  transition: $propriedade $tempo $ease $delay !important;
+}
+
+/* Medias */
+$breakpoints: ( xs: 600px, sm: 960px, md: 1280px, lg: 1920px );
+$breakpoints-min: ( xs: 0, sm: 601px, md: 961px, lg: 1281px );
+
+@mixin media-min-breakpoints($size) {
+  @include media-min(map-get($breakpoints-min, $size)) {
+    @content;
+  }
+}
+
+@mixin media-max-breakpoints($size) {
+  @include media-max(map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin media-min($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin media-max($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin media-min-max($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}

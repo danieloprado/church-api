@@ -17,10 +17,10 @@ gulp.task('server-develop', () => {
     stdout: false,
     env: {
       'NODE_ENV': 'development',
-      'PORT': 3000
+      'NODE_PORT': 3000
     }
-  }).on('readable', function() {
-    this.stdout.on('data', function(chunk) {
+  }).on('readable', () => {
+    this.stdout.on('data', chunk => {
       notifier.notify('Server restarted');
 
       if (/^Express server listening on port/.test(chunk)) {
@@ -29,5 +29,5 @@ gulp.task('server-develop', () => {
     });
     this.stdout.pipe(process.stdout);
     this.stderr.pipe(process.stderr);
-  });
+  }).on('crash', () => notifier.notify('Server error'));
 });

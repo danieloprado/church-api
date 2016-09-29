@@ -1,24 +1,38 @@
-var express = require('express'),
+require('app-module-path/register');
+
+const express = require('express'),
   bodyParser = require('body-parser'),
   logger = require('morgan'),
   timeout = require('connect-timeout'),
-  Test = require('./middlewares');
+  allowCors = require('middlewares/allowCors'),
+  bindUser = require('middlewares/bindUser'),
+  errors = require('middlewares/errors');
 
-console.log(new Test());
-console.log(Test.age());
-
+const publicDir = __dirname + '/../dist';
+const env = process.env.NODE_ENV || 'production';
+const port = process.env.NODE_PORT || 3000;
 const app = express();
 
+if (env === 'development') {
+  app.use(logger('dev'));
+}
+
 app.use(timeout('5s'));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(allowCors);
+app.use(bindUser);
 
-app.get('/', function(req, res) {
-  res.json('ok now');
-});
+app.use('/api', require('routes'));
+app.get('*', (req, res) => res.sendFile('index.html', { root: publicDir }));
 
-const port = process.env.PORT || 3000;
-app.listen(port, function() {
-  console.log('server start at ' + port);
-});
+app.use(errors.notFound);
+app.use(errors.validationErrors);
+
+if (env === 'development') {
+  app.use(errors.developmentError);
+} else {
+  app.use(errors.productionError);
+}
+
+app.listen(port, () => console.log('server start at ' + port));

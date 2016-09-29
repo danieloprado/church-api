@@ -1,0 +1,52 @@
+app-title
+  span(ng-show="!$ctrl.editing") Novo Evento
+  span(ng-show="$ctrl.editing") Editar Evento
+
+form(md-form-validator, ng-submit="$ctrl.submit()", name="eventForm")
+  md-card
+    md-card-content
+
+      div(layout="row",layout-sm="column",layout-xs="column")
+        div(flex)
+          md-input-container.md-block
+            label Título
+            input(ng-model='$ctrl.model.title', name='title', required)
+            md-messages
+
+          md-input-container.md-block
+            label Descrição
+            textarea(ng-model='$ctrl.model.description', name='description')
+
+      div(layout="row", layout-xs="column")
+        div(flex)
+          md-input-container.md-block
+            label Inicio
+            input(ng-model='$ctrl.model.beginDate', name='beginDate', required, datepicker)
+            md-messages
+
+        div(flex)
+          md-input-container.md-block
+            label Hora
+            input(ng-model='$ctrl.model.beginTime', name="beginTime", timepicker, required)
+            md-messages
+
+        div(flex)
+          md-input-container.md-block
+            label Término
+            input(ng-model='$ctrl.model.endDate', name='endDate', required, datepicker)
+            md-messages
+
+        div(flex)
+          md-input-container.md-block
+            label Hora
+            input(ng-model='$ctrl.model.endTime', name="endTime", timepicker, required)
+            md-messages
+
+        //div(flex)
+          app-place-maps(ng-model="$ctrl.model.location",placeholder="Local")
+
+  div(layout="row")
+    div(flex)
+      md-button.md-raised(ng-href="/agenda") Cancelar
+    div.text-right(flex)
+      md-button.md-raised.md-accent(type="submit") Salvar
