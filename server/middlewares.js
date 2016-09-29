@@ -1,3 +1,17 @@
+'use strict';
+
+class Test {
+  static age() {
+    return 15;
+  }
+
+  constructor() {
+    this.name = 'oi';
+  }
+}
+
+module.exports = Test;
+
 // import * as _ from 'lodash';
 
 // const _ = require('lodash'),

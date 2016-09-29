@@ -1,8 +1,7 @@
 const gulp = require('gulp'),
   rimraf = require('rimraf'),
   notifier = require('node-notifier'),
-  nodemon = require('gulp-nodemon'),
-  tsc = require('./tsc');
+  nodemon = require('gulp-nodemon');
 
 const serverPath = { src: 'server', dist: 'bin' };
 
@@ -10,19 +9,11 @@ gulp.task('server-clean', callback => {
   rimraf(`${serverPath.dist}/**/*`, callback);
 });
 
-gulp.task('server-compile', callback => {
-  tsc(serverPath.src, false, callback);
-});
-
-gulp.task('server-watch', callback => {
-  tsc(serverPath.src, true, callback);
-});
-
-gulp.task('server-develop', ['server-watch'], () => {
+gulp.task('server-develop', () => {
   nodemon({
-    script: 'bin/main.js',
+    script: 'server/main.js',
     ext: 'js',
-    ignore: ['gulp/**/*', 'server/**/*', 'app/**/*'],
+    ignore: ['gulp/**/*', 'app/**/*', 'gulpfile.js'],
     stdout: false,
     env: {
       'NODE_ENV': 'development',
