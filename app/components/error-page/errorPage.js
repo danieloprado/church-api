@@ -9,19 +9,19 @@
     </div>`,
     controller: ErrorPage,
     bindings: {
-      complete: "&",
-      html: "<"
+      complete: '&',
+      html: '<'
     }
   });
 
   function ErrorPage($timeout) {
-    $timeout(_ => {
+    $timeout(() => {
       const iframe = document.querySelector('#error-iframe');
       iframe.contentDocument.write(this.html);
     });
 
     console.log(this);
   }
-  ErrorPage.$inject = ["$timeout"];
+  ErrorPage.$inject = ['$timeout'];
 
 })(angular);

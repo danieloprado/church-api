@@ -19,6 +19,7 @@
     $scope.$on('loading-started', () => this.hide = false);
     $scope.$on('loading-finished', () => this.hide = true);
   }
-  Loader.$inject = ["$scope"];
+  Loader.$inject = ['$scope'];
 
 })(angular);
+

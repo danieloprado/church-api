@@ -1,12 +1,12 @@
 (angular => {
   'use strict';
 
-  angular.module('app').component("appLoginComponent", {
-    templateUrl: "/views/components/login/login.html",
+  angular.module('app').component('appLoginComponent', {
+    templateUrl: '/views/components/login/login.html',
     controller: Login,
     bindings: {
-      cancel: "&",
-      complete: "&"
+      cancel: '&',
+      complete: '&'
     }
   });
 
@@ -20,8 +20,8 @@
     }
 
     this.changeUser = () => {
-      UI.Confirm("Trocar de usuário?", "Ao trocar de usuário todas as informações não salvas serão perdidas")
-        .then(_ => {
+      UI.Confirm('Trocar de usuário?', 'Ao trocar de usuário todas as informações não salvas serão perdidas')
+        .then(() => {
           this.cancel();
           loginService.logout();
         });
@@ -36,5 +36,3 @@
   Login.$inject = ['UI', 'authService', 'loginService'];
 
 })(angular);
-
-

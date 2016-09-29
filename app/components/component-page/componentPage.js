@@ -10,17 +10,17 @@
     this.hide = true;
     const elem = angular.element('#app-component-page');
 
-    $scope.$on("show-component-page", (info, data) => {
-      elem.addClass("fadeInUp");
-      elem.removeClass("fadeOutDown");
+    $scope.$on('show-component-page', (info, data) => {
+      elem.addClass('fadeInUp');
+      elem.removeClass('fadeOutDown');
 
       this.hide = false;
       elem.html($compile(data.template)(data.$scope));
     });
 
-    $scope.$on("hide-component-page", (info, data) => {
-      elem.addClass("fadeOutDown");
-      elem.removeClass("fadeInUp");
+    $scope.$on('hide-component-page', () => {
+      elem.addClass('fadeOutDown');
+      elem.removeClass('fadeInUp');
 
       this.hide = true;
     });
@@ -29,4 +29,3 @@
 
 
 })(angular);
-

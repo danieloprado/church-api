@@ -1,14 +1,14 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
-  angular.module("app").directive("datepicker", DatePicker);
+  angular.module('app').directive('datepicker', DatePicker);
 
   function DatePicker($compile, $mdpDatePicker) {
 
     return {
       restric: 'A',
       scope: {
-        ngModel: "="
+        ngModel: '='
       },
       priority: 1,
       replace: false,
@@ -38,4 +38,3 @@
 
 
 })(angular);
-
