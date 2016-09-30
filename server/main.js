@@ -15,17 +15,20 @@ const app = express();
 
 if (env === 'development') {
   app.use(logger('dev'));
+} else {
+  app.use(timeout('5s'));
 }
 
 app.use(express.static(publicDir));
-app.use(timeout('5s'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(allowCors);
 app.use(bindUser);
 
 app.use('/api', require('routes'));
-app.get('*', (req, res) => res.sendFile('index.html', { root: publicDir }));
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: publicDir })
+});
 
 app.use(errors.notFound);
 app.use(errors.validationErrors);
