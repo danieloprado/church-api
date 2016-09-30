@@ -16,7 +16,7 @@ const app = express();
 if (env === 'development') {
   app.use(logger('dev'));
 } else {
-
+  app.use(timeout('5s'));
 }
 
 app.use(express.static(publicDir));
