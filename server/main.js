@@ -17,6 +17,7 @@ if (env === 'development') {
   app.use(logger('dev'));
 }
 
+app.use(express.static(publicDir));
 app.use(timeout('5s'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
