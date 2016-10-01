@@ -1,8 +1,13 @@
 {
   "name": "church",
   "version": "1.0.0",
-  "description": "",
+  "description": "church api for app",
   "main": "server/main.js",
+  "readme": "README.md",
+  "repository": {
+    "url": "https://gitlab.com/danielprado.ad/church-api",
+    "type": "git"
+  },
   "scripts": {
     "start": "node server/main.js",
     "develop": "npm run gulp",
@@ -28,6 +33,7 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.16.0",
+    "bower": "^1.7.9",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",
     "gulp-autoprefixer": "^3.1.1",
