@@ -1,7 +1,7 @@
 'use strict';
 
-const Model = require('objection').Model,
-  ChurchUser = require('./churchUser');
+const Model = require('objection').Model;
+//ChurchUser = require('./churchUser');
 
 class User extends Model {
 
@@ -28,14 +28,14 @@ class User extends Model {
   static get relationMappings() {
     return {
 
-      churches: {
-        relation: Model.HasManyRelation,
-        modelClass: ChurchUser,
-        join: {
-          from: 'User.id',
-          to: 'ChurchUser.userId'
-        }
-      },
+      // churches: {
+      //   relation: Model.HasManyRelation,
+      //   modelClass: ChurchUser,
+      //   join: {
+      //     from: 'User.id',
+      //     to: 'ChurchUser.userId'
+      //   }
+      // },
 
     };
   }

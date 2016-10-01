@@ -9,6 +9,8 @@
   "maxdepth": 2,
   "globals": {
     "module": true,
-    "exports": true
+    "exports": true,
+    "require": true,
+    "process": true
   }
 }
