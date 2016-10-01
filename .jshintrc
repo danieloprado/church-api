@@ -8,10 +8,7 @@
   "newcap": true,
   "maxdepth": 2,
   "globals": {
-    "require": true,
-    "console": true,
-    "process": true,
-    "Promise": true,
-    "__dirname": true
+    "module": true,
+    "exports": true
   }
 }
