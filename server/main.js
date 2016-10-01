@@ -4,16 +4,18 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   logger = require('morgan'),
   timeout = require('connect-timeout'),
+  config = require('config'),
+  db = require('db'),
   allowCors = require('middlewares/allowCors'),
   bindUser = require('middlewares/bindUser'),
   errors = require('middlewares/errors');
 
+db.connect();
+
 const publicDir = __dirname + '/../dist';
-const env = process.env.NODE_ENV || 'production';
-const port = process.env.NODE_PORT || 3000;
 const app = express();
 
-if (env === 'development') {
+if (config.env === 'development') {
   app.use(logger('dev'));
 } else {
   app.use(timeout('5s'));
@@ -31,10 +33,10 @@ app.get('*', (req, res) => res.sendFile('index.html', { root: publicDir }));
 app.use(errors.notFound);
 app.use(errors.validationErrors);
 
-if (env === 'development') {
+if (config.env === 'development') {
   app.use(errors.developmentError);
 } else {
   app.use(errors.productionError);
 }
 
-app.listen(port, () => console.log('server start at ' + port));
+app.listen(config.port, () => console.log('server start at ' + config.port));

@@ -14,7 +14,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run bower install",
     "bower": "node ./node_modules/bower/bin/bower",
-    "gulp": "node ./node_modules/gulp/bin/gulp"
+    "gulp": "node ./node_modules/gulp/bin/gulp",
+    "knex": "node ./node_modules/knex/lib/bin/cli"
   },
   "author": {
     "name": "Daniel Prado",

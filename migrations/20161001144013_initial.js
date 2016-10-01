@@ -13,7 +13,7 @@ exports.up = function(knex) {
     table.string('adress', 150);
     table.float('latitude');
     table.float('longitude');
-  }).createTable('ChurchUser', function(table) {
+  }).createTable('Church_User', function(table) {
     table.integer('userId').notNullable().unsigned().references('id').inTable('User');
     table.integer('churchId').notNullable().unsigned().references('id').inTable('Church');
     table.string('role', 20).notNullable();
