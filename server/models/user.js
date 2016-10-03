@@ -8,7 +8,6 @@ class User extends Model {
     return 'User';
   }
 
-
   static get jsonSchema() {
     return {
       type: 'object',
@@ -34,7 +33,7 @@ class User extends Model {
           from: 'User.id',
           to: 'ChurchUser.userId'
         }
-      },
+      }
 
     };
   }

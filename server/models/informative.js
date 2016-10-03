@@ -1,22 +1,24 @@
 'use strict';
-
 const Model = require('objection').Model;
 
-class ChurchUser extends Model {
+class Informative extends Model {
 
   static get tableName() {
-    return 'ChurchUser';
+    return 'Informative';
   }
 
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['userId', 'churchId', 'role'],
+      required: ['title', 'date', 'message', 'creatorId', 'churchId'],
 
       properties: {
-        userId: { type: 'integer' },
-        churchId: { type: 'integer' },
-        role: { type: 'string', minLength: 1, maxLength: 1000 }
+        id: { type: 'integer' },
+        title: { type: 'string', minLength: 1, maxLength: 100 },
+        date: { type: 'date' },
+        message: { type: 'string' },
+        creatorId: { type: 'integer' },
+        churchId: { type: 'integer' }
       }
     };
   }
@@ -24,19 +26,20 @@ class ChurchUser extends Model {
   static get relationMappings() {
     return {
 
-      user: {
+      creator: {
         relation: Model.HasOneRelation,
         modelClass: __dirname + '/User',
         join: {
-          from: 'ChurchUser.userId',
+          from: 'Informative.creatorId',
           to: 'User.id'
         }
       },
+
       church: {
         relation: Model.HasOneRelation,
         modelClass: __dirname + '/Church',
         join: {
-          from: 'ChurchUser.churchId',
+          from: 'Informative.churchId',
           to: 'Church.id'
         }
       }
@@ -45,4 +48,4 @@ class ChurchUser extends Model {
   }
 }
 
-module.exports = ChurchUser;
+module.exports = Informative;

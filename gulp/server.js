@@ -13,7 +13,7 @@ gulp.task('server-develop', () => {
   return nodemon({
     script: 'server/main.js',
     ext: 'js',
-    watch: ['server/**/*.js'],
+    watch: ['server/**/*.js', 'knexfile.js'],
     stdout: true,
     env: {
       'NODE_ENV': 'development',
