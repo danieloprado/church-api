@@ -20,7 +20,10 @@ function compare(hash, password) {
   return new Promise((resolve, reject) => {
 
     bcrypt.compare(password, hash, (err, isMatch) => {
-      if (err || !isMatch) return reject(err || 'bcript-invalid');
+      if (err || !isMatch) {
+        return reject(new Error(err || 'bcript-invalid'));
+      }
+
       resolve();
     });
 

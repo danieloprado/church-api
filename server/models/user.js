@@ -1,6 +1,7 @@
 'use strict';
 
-const Model = require('objection').Model;
+const Model = require('objection').Model,
+  bcrypt = require('services/bcrypt');
 
 class User extends Model {
 
@@ -8,8 +9,14 @@ class User extends Model {
     return 'User';
   }
 
+  setPassword(password) {
+    return bcrypt.hash(password).then(hash => {
+      this.password = hash;
+    });
+  }
+
   checkPassword(password) {
-    return this.password === password;
+    return bcrypt.compare(this.password, password);
   }
 
   static get jsonSchema() {
