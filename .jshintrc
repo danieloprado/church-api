@@ -11,6 +11,7 @@
     "module": true,
     "exports": true,
     "require": true,
-    "process": true
+    "process": true,
+    "console": true
   }
 }

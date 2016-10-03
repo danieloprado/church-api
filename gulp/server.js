@@ -10,11 +10,11 @@ gulp.task('server-clean', callback => {
 });
 
 gulp.task('server-develop', () => {
-  nodemon({
+  return nodemon({
     script: 'server/main.js',
     ext: 'js',
-    ignore: ['gulp/**/*', 'app/**/*', 'gulpfile.js'],
-    stdout: false,
+    watch: ['server/**/*.js'],
+    stdout: true,
     env: {
       'NODE_ENV': 'development',
       'NODE_PORT': 3000

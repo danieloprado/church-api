@@ -8,7 +8,7 @@ const router = express.Router();
 //router.use("/profile", require("./profile/routes"));
 
 router.get('/user', function(req, res) {
-  user.query().then(function(users) {
+  user.query().eager('churches').then(function(users) {
     res.json(users);
   });
 });
