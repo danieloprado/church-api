@@ -1,5 +1,4 @@
-const bcrypt = require('bcrypt-nodejs'),
-  config = require('../server/config');
+const bcrypt = require('../server/services/bcrypt');
 
 exports.seed = function(knex) {
   'use strict';
@@ -24,26 +23,14 @@ function createAdminUser(knex) {
   return knex.select(['id', 'password']).from('User').where({ email: adminUser.email }).then(users => {
     if (users.length > 0) return users[0].id;
 
-    return generateAdminPassword(adminUser.password).then(password => {
+    return bcrypt.hash(adminUser.password).then(password => {
       adminUser.password = password;
       return knex.insert(adminUser).returning('id').into('User')
     }).then(res => res[0]);
+
   }).then(userId => {
     adminUser.id = userId;
     return adminUser;
-  });
-}
-
-function generateAdminPassword(password) {
-  return new Promise((resolve, reject) => {
-    bcrypt.genSalt(config.bcryptSaltFactor, (err, salt) => {
-      if (err) return reject(err);
-
-      bcrypt.hash(password, salt, null, (err, hash) => {
-        if (err) return reject(err);
-        resolve(hash);
-      });
-    });
   });
 }
 
