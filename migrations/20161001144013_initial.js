@@ -8,6 +8,7 @@ exports.up = function(knex) {
   }).createTable('Church', function(table) {
     table.increments('id').primary();
     table.string('name', 100).notNullable();
+    table.string('slug', 30).notNullable();
     table.string('email', 150).unique();
     table.string('phone', 20);
     table.string('adress', 150);

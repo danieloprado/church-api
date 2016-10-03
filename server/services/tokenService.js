@@ -5,7 +5,7 @@ function generate(user, church) {
   return new Promise((resolve) => {
 
     const tokenData = {
-      _id: user._id,
+      id: user.id,
       email: user.email,
       name: user.name,
       roles: [],
@@ -19,7 +19,7 @@ function generate(user, church) {
     tokenData.roles = church.getUserRoles(user).then((roles) => {
       tokenData.roles = roles;
       tokenData.church = {
-        _id: church._id,
+        id: church.id,
         name: church.name,
         slug: church.slug
       };
@@ -54,7 +54,7 @@ function renew(decoded) {
 function updateChurch(decoded, church) {
   return new Promise((resolve) => {
     decoded.church = {
-      _id: church._id,
+      id: church.id,
       name: church.name,
       slug: church.slug
     };

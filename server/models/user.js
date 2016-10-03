@@ -8,6 +8,10 @@ class User extends Model {
     return 'User';
   }
 
+  checkPassword(password) {
+    return this.password === password;
+  }
+
   static get jsonSchema() {
     return {
       type: 'object',

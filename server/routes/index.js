@@ -1,10 +1,8 @@
-const express = require('express'),
+const router = require('express').Router(),
   user = require('models/user'),
   errors = require('middlewares/errors');
 
-const router = express.Router();
-
-//router.use("/account", require("./account/routes"));
+router.use('/auth', require('./auth'));
 //router.use("/profile", require("./profile/routes"));
 
 router.get('/user', function(req, res) {
