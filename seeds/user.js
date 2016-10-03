@@ -25,7 +25,7 @@ function createAdminUser(knex) {
 
     return bcrypt.hash(adminUser.password).then(password => {
       adminUser.password = password;
-      return knex.insert(adminUser).returning('id').into('User')
+      return knex.insert(adminUser).returning('id').into('User');
     }).then(res => res[0]);
 
   }).then(userId => {
