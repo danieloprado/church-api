@@ -7,7 +7,8 @@ function generate(user, churchUser) {
     const tokenData = {
       id: user.id,
       email: user.email,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       roles: [],
       exp: Math.floor(Date.now() / 1000) + (auth.timeout * 60)
     };

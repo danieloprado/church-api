@@ -11,7 +11,7 @@
   });
 
   function Login(UI, authService, loginService) {
-    this.model = {};
+    this.model = { email: 'danielprado.ad@gmail.com', password: 'senha@123' };
     this.lockUser = false;
 
     if (authService.hasToken()) {

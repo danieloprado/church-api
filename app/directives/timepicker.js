@@ -21,14 +21,20 @@
       compile: (tElement, tAttrs) => {
         tElement.removeAttr('timepicker');
         tElement.before('<md-icon md-svg-icon="clock" ng-click="showPicker($event)"></md-icon>');
+        tElement.parent('md-input-container').addClass('md-icon-float md-icon-left');
         tAttrs.$set('ui-time-mask', 'short');
 
         return {
           pre: ($scope, iElement) => {
             $scope.showPicker = (targetEvent) => {
               if (iElement.attr('disabled')) return;
+              let modelValue = null;
 
-              $mdpTimePicker(moment($scope.ngModel, 'HH:mm').toDate(), { targetEvent, ampm: false })
+              if ($scope.ngModel) {
+                modelValue = moment($scope.ngModel, 'HH:mm').toDate();
+              }
+
+              $mdpTimePicker(modelValue, { targetEvent, ampm: false })
                 .then(selectedDate => $scope.ngModel = moment(selectedDate).format('HH:mm'));
             };
 

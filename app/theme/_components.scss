@@ -1,25 +1,20 @@
 md-toolbar {
   position: relative;
   min-height: 0;
-
   &.main-toolbar {
     background: $white;
     color: $color;
     fill: $color;
-
     md-icon {
       fill: currentColor;
       color: inherit;
     }
-
-    + md-toolbar {
+    +md-toolbar {
       &:before {
-        box-shadow: 0 2px 4px rgba(0,0,0,.14);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .14);
       }
-
       md-tabs-wrapper {
         background: white !important;
-
         md-tab-item,
         md-icon {
           color: $color !important;
@@ -28,16 +23,15 @@ md-toolbar {
       }
     }
   }
-
   &:before {
     top: 0;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 -1px 8px rgba(0,0,0,.28);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 -1px 8px rgba(0, 0, 0, .28);
     content: '';
     height: 100%;
     left: 0;
     right: 0;
     position: absolute;
-    will-change: top,left;
+    will-change: top, left;
     z-index: -1;
   }
 }
@@ -49,16 +43,13 @@ md-content {
 
 md-icon {
   color: inherit;
-
   &:focus {
     outline: none;
   }
-
   &[size='32'] {
     width: 32px;
     height: 32px;
   }
-
   svg {
     vertical-align: middle;
     fill: currentColor;
@@ -66,41 +57,18 @@ md-icon {
   }
 }
 
-.md-button:not(.md-fab) md-icon + span {
+.md-button:not(.md-fab) md-icon+span {
   margin-left: 10px;
   display: inline-block;
 }
 
 .md-button.md-fab.md-fab-bottom-right {
   position: fixed;
-
   @include media-max-breakpoints(xs) {
     right: 5px;
     bottom: 5px;
   }
 }
-
-//
-// md-input-container {
-//   margin-bottom: 0;
-//   padding: 2px 15px;
-//   margin-top: 30px;
-//
-//   label {
-//     padding-left: 15px !important;
-//     width: auto !important;
-//   }
-//
-//   &.md-input-focused label:not(.md-no-float),
-//   &.md-input-has-placeholder label:not(.md-no-float),
-//   &.md-input-has-value label:not(.md-no-float) {
-//     transform: translate3d(5px,6px,0) scale(.75);
-//   }
-//
-//   .md-errors-spacer {
-//     min-height: 0;
-//   }
-// }
 
 md-input-container.md-default-theme.md-input-invalid .md-input,
 md-input-container.md-input-invalid .md-input {
@@ -113,12 +81,10 @@ md-datepicker {
   margin-right: 0 !important;
   padding-right: 0 !important;
   display: block;
-
   .md-datepicker-input-container {
     margin-left: 0;
     width: calc(100% - 40px);
   }
-
   .md-datepicker-button {
     padding-left: 0 !important;
     margin-left: 0 !important;
@@ -128,10 +94,9 @@ md-datepicker {
 
 md-datepicker,
 md-input-container {
-  + [ng-messages],
+  +[ng-messages],
   [ng-messages] {
     min-height: 19px;
-
     &.ng-hide {
       display: block !important;
       visibility: hidden;
@@ -154,12 +119,10 @@ md-datepicker {
       border-color: $danger;
       border-width: 2px;
     }
-
     md-icon {
       fill: rgba($danger, .8);
     }
-
-    & + [ng-messages] {
+    &+[ng-messages] {
       padding-left: 50px;
       color: $danger;
       font-size: 12px;
@@ -174,56 +137,46 @@ table.md-table {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
     line-height: 18px;
-
     &.md-cell-buttons {
       text-align: right;
       padding-top: 5px !important;
       padding-bottom: 5px !important;
-
       .md-button {
         margin: 0;
       }
     }
   }
-
   &.striped {
     tr:hover td {
       background: rgba($accent, .08) !important;
     }
-
     tbody tr:nth-child(odd) td {
       background: rgba(black, .03);
     }
   }
-
-  tfoot > tr:first-child > td {
+  tfoot>tr:first-child>td {
     border-top: 2px solid lighten(black, 80%);
   }
-
   &:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2),
   &:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
     padding: 0 15px 0 0;
   }
-
   td.md-cell:last-child,
   th.md-column:last-child {
     padding: 0 15px 0 0;
   }
-
   &:not(.md-row-select) td.md-cell:first-child,
   &:not(.md-row-select) th.md-column:first-child {
     padding: 0 15px;
   }
 }
 
-
-app-loading > div {
+app-loading>div {
   position: absolute;
   z-index: 10000;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, .5);
-
   md-progress-circular {
     position: absolute;
     right: 0;
@@ -240,7 +193,6 @@ app-place-maps {
   min-height: 300px;
   position: relative;
   margin-top: 20px;
-
   md-progress-circular {
     position: absolute;
     top: 0;
@@ -250,17 +202,14 @@ app-place-maps {
     margin: auto !important;
     z-index: 0;
   }
-
   ui-gmap-google-map {
     z-index: 1;
     position: relative;
-
     .angular-google-map-container {
       display: block;
       width: calc(100% - 30px);
       min-height: 300px;
       margin: 0 15px 15px;
-
       input[type=text] {
         background-color: $white;
         font-size: 15px;
@@ -281,7 +230,6 @@ app-place-maps {
       }
     }
   }
-
   .gm-style-mtc {
     display: none;
   }
@@ -289,7 +237,7 @@ app-place-maps {
 
 md-tooltip.md-default-theme ._md-content,
 md-tooltip ._md-content {
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 md-toast {
@@ -297,7 +245,6 @@ md-toast {
     bottom: auto;
     padding: 5px;
   }
-
   @include media-min-breakpoints(sm) {
     left: auto;
     width: auto;
