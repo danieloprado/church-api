@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken'),
-  auth = require('config').jwtSecret;
+  auth = require('config').auth;
 
-function generate(user, church) {
+function generate(user, churchUser) {
   return new Promise((resolve) => {
 
     const tokenData = {
@@ -12,20 +12,18 @@ function generate(user, church) {
       exp: Math.floor(Date.now() / 1000) + auth.timeout
     };
 
-    if (!church) {
+    if (!churchUser) {
       resolve(jwt.sign(tokenData, auth.secret));
     }
 
-    tokenData.roles = church.getUserRoles(user).then((roles) => {
-      tokenData.roles = roles;
-      tokenData.church = {
-        id: church.id,
-        name: church.name,
-        slug: church.slug
-      };
+    tokenData.roles = churchUser.roles.split(',');
+    tokenData.church = {
+      id: churchUser.church.id,
+      name: churchUser.church.name,
+      slug: churchUser.church.slug
+    };
 
-      resolve(jwt.sign(tokenData, auth.secret));
-    });
+    resolve(jwt.sign(tokenData, auth.secret));
 
   });
 }

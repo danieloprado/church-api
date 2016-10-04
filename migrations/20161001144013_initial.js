@@ -17,8 +17,8 @@ exports.up = function(knex) {
   }).createTable('ChurchUser', function(table) {
     table.integer('userId').notNullable().unsigned().references('id').inTable('User');
     table.integer('churchId').notNullable().unsigned().references('id').inTable('Church');
-    table.string('role', 1000).notNullable();
-    table.primary(['userId', 'churchId', 'role']);
+    table.string('roles', 1000).notNullable();
+    table.primary(['userId', 'churchId', 'roles']);
   });
 };
 

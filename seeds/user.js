@@ -50,7 +50,7 @@ function grantUserAcess(knex, user, churches) {
     return {
       userId: user.id,
       churchId: church.id,
-      role: 'sysAdmin'
+      roles: 'sysAdmin'
     };
   });
 

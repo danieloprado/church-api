@@ -11,12 +11,12 @@ class ChurchUser extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['userId', 'churchId', 'role'],
+      required: ['userId', 'churchId', 'roles'],
 
       properties: {
         userId: { type: 'integer' },
         churchId: { type: 'integer' },
-        role: { type: 'string', minLength: 1, maxLength: 1000 }
+        roles: { type: 'string', minLength: 1, maxLength: 1000 }
       }
     };
   }
