@@ -9,7 +9,7 @@ class User extends Model {
     return 'User';
   }
 
-  setPassword(password) {
+  setPassword(password: string) {
     return bcrypt.hash(password).then(hash => {
       this.password = hash;
     });

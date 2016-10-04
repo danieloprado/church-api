@@ -1,14 +1,13 @@
-require('app-module-path/register');
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import * as logger from 'morgan';
+import * as timeout from 'connect-timeout';
 
-const express = require('express'),
-  bodyParser = require('body-parser'),
-  logger = require('morgan'),
-  timeout = require('connect-timeout'),
-  config = require('config'),
-  db = require('db'),
-  allowCors = require('middlewares/allowCors'),
-  bindUser = require('middlewares/bindUser'),
-  errors = require('middlewares/errors');
+import * as config from './config';
+import * as db from './db';
+import * as errors from './middlewares/errors';
+import { allowCors } from './middlewares/allowCors';
+import { bindUser } from './middlewares/bindUser';
 
 db.connect();
 
