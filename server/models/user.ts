@@ -1,9 +1,11 @@
 'use strict';
 
-const Model = require('objection').Model,
-  bcrypt = require('services/bcrypt');
+import * as objeciton from 'objection';
+import * as bcrypt from '../services/bcrypt';
 
 class User extends Model {
+
+  password: string;
 
   static get tableName() {
     return 'User';
@@ -15,7 +17,7 @@ class User extends Model {
     });
   }
 
-  checkPassword(password) {
+  checkPassword(password: string) {
     return bcrypt.compare(this.password, password);
   }
 
