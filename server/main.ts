@@ -32,7 +32,7 @@ app.get('*', (req, res) => res.sendFile('index.html', { root: publicDir }));
 app.use(errors.notFound);
 app.use(errors.validationErrors);
 
-if (config.env === 'development') {
+if (config.env === "development") {
   app.use(errors.developmentError);
 } else {
   app.use(errors.productionError);
