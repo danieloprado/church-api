@@ -31,10 +31,7 @@ function generate(user, churchUser) {
 function verify(token) {
   return new Promise((resolve, reject) => {
     jwt.verify(token, auth.secret, function(err, decoded) {
-      if (err || !decoded) {
-        return reject();
-      }
-
+      if (err || !decoded) return reject();
       resolve(decoded);
     });
   });
