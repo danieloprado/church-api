@@ -1,7 +1,9 @@
 const authService = require('services/auth');
 
 module.exports = function(req, res, next) {
+
   authService.login(req.body.email, req.body.password).then(token => {
+    res.setHeader('X-Token', token);
     res.json(token);
   }).catch(err => {
     switch (err.message) {
@@ -12,4 +14,5 @@ module.exports = function(req, res, next) {
         return next(err);
     }
   });
+
 };

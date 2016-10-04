@@ -9,7 +9,7 @@ function generate(user, churchUser) {
       email: user.email,
       name: user.name,
       roles: [],
-      exp: Math.floor(Date.now() / 1000) + auth.timeout
+      exp: Math.floor(Date.now() / 1000) + (auth.timeout * 60)
     };
 
     if (!churchUser) {
@@ -30,17 +30,19 @@ function generate(user, churchUser) {
 
 function verify(token) {
   return new Promise((resolve, reject) => {
+
     jwt.verify(token, auth.secret, function(err, decoded) {
       if (err || !decoded) return reject();
       resolve(decoded);
     });
+
   });
 }
 
 function renew(decoded) {
   return new Promise((resolve) => {
     const now = Math.floor(Date.now() / 1000);
-    decoded.exp = now + auth.timeout;
+    decoded.exp = now + (auth.timeout * 60);
 
     resolve(jwt.sign(decoded, auth.secret));
   });
