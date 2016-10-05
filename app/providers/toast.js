@@ -3,16 +3,15 @@
 
   angular.module('app').factory('Toast', [
     '$mdToast',
-    'marked',
     Toast
   ]);
 
-  function Toast($mdToast, marked) {
+  function Toast($mdToast) {
     let toast, promise;
 
     const obj = (message, undo) => {
       toast = $mdToast.simple()
-        .htmlContent(marked(message))
+        .textContent(message)
         .hideDelay(10000)
         .position('top right');
 
