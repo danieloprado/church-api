@@ -1,4 +1,4 @@
-const Joi = require('./config');
+const Joi = require('./Joi.config');
 
 const schema = Joi.object().keys({
   id: Joi.number().integer().min(1),

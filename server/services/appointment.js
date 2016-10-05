@@ -16,7 +16,7 @@ function create(model, user) {
 function update(model, user) {
   return appointmentRepository.findById(model.id).then(appointment => {
     if (!appointment) throw new Error('not-found');
-    if (appointment.churchId !== user.churchId) throw new Error('access-denied');
+    if (appointment.churchId !== user.church.id) throw new Error('access-denied');
 
     return appointmentRepository.update(model);
   });
