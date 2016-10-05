@@ -11,7 +11,7 @@ exports.up = function(knex) {
     table.string('slug', 30).notNullable();
     table.string('email', 150).unique();
     table.string('phone', 20);
-    table.string('adress', 150);
+    table.string('address', 150);
     table.float('latitude');
     table.float('longitude');
   }).createTable('ChurchUser', function(table) {
