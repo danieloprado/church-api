@@ -12,6 +12,7 @@
       .when('/church', {
         templateUrl: '/views/pages/church/edit/edit.html',
         controller: 'appChurch.editCtrl',
+        controllerAs: '$ctrl'
       });
   }
 

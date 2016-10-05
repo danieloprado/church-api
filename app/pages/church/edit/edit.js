@@ -3,23 +3,30 @@
 
   angular.module('appChurch')
     .controller('appChurch.editCtrl', [
-      '$scope',
-      'uiGmapGoogleMapApi',
       'Loader',
       'Toast',
       'churchService',
       EditCtrl
     ]);
 
-  function EditCtrl($scope, uiGmapGoogleMapApi, loader, toast, service) {
-    $scope.model = {};
+  function EditCtrl(loader, toast, service) {
+    this.model = {};
 
     loader(service.current()).then((church) => {
-      $scope.model = church;
+      this.model = church;
+      this.location = {
+        address: church.address,
+        lat: church.latitude,
+        lng: church.longitude
+      };
     });
 
-    $scope.submit = () => {
-      loader(service.save($scope.model)).then(() => {
+    this.submit = () => {
+      this.model.address = this.location.address;
+      this.model.lat = this.location.lat;
+      this.model.lng = this.location.lng;
+
+      loader(service.save(this.model)).then(() => {
         toast('Informações atualizadas');
       });
     };
