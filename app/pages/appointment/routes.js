@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 
-  angular.module('appointment')
+  angular.module('appAppointment')
     .config([
       '$routeProvider',
       Routes
@@ -11,18 +11,17 @@
     $routeProvider
       .when('/agenda', {
         templateUrl: '/views/pages/appointment/list/list.html',
-        controller: 'appointment.listCtrl',
+        controller: 'appAppointment.listCtrl',
         controllerAs: '$ctrl'
       }).when('/agenda/criar', {
         templateUrl: '/views/pages/appointment/form/form.html',
-        controller: 'appointment.formCtrl',
+        controller: 'appAppointment.formCtrl',
         controllerAs: '$ctrl'
       }).when('/agenda/:id/editar', {
         templateUrl: '/views/pages/appointment/form/form.html',
-        controller: 'appointment.formCtrl',
+        controller: 'appAppointment.formCtrl',
         controllerAs: '$ctrl'
       });
   }
 
 })(angular);
-

@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 
-  angular.module('appointment').controller('appointment.listCtrl', [
+  angular.module('appAppointment').controller('appAppointment.listCtrl', [
     'UI',
     'appointmentService',
     ListCtrl

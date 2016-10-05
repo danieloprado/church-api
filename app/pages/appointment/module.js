@@ -1,8 +1,9 @@
 (function(angular) {
   'use strict';
 
-  angular.module('appointment', [
+  angular.module('appAppointment', [
     'ngRoute'
   ]);
 
 })(angular);
+

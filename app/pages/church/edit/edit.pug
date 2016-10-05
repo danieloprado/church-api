@@ -1,30 +1,32 @@
-md-card
+app-title Igreja
 
-	form(md-form-validator, ng-submit="submit()")
+form(md-form-validator, ng-submit="submit()")
+  md-card
+    md-card-content(layout-padding)
 
-		md-input-container.md-block
-			label Name
-			input(ng-model='model.name', name="name", required)
-			md-messages
-				md-message(required) Obrigatório
+      md-input-container.md-block
+        label Name
+        input(ng-model='model.name', name="name", required)
+        md-messages
+          md-message(required) Obrigatório
 
-		div(layout="row",layout-sm="column",layout-xs="column")
-			div(flex)
-				md-input-container.md-block
-					label Email
-					input(ng-model='model.email', type="email", name="email")
-					md-messages
-						md-message(email) Email inválido
-						md-message(required) Obrigatório
+      div(layout="row",layout-sm="column",layout-xs="column")
+        div(flex)
+          md-input-container.md-block
+            label Email
+            input(ng-model='model.email', type="email", name="email")
+            md-messages
+              md-message(email) Email inválido
+              md-message(required) Obrigatório
 
-			div(flex)
-				md-input-container.md-block
-					label Telefone
-					input(ng-model='model.phone', name="phone")
-					md-messages
-						md-message(required) Obrigatório
+        div(flex)
+          md-input-container.md-block
+            label Telefone
+            input(ng-model='model.phone', name="phone")
+            md-messages
+              md-message(required) Obrigatório
 
-		app-place-maps(ng-model="model.location",placeholder="Endereço")
+      //app-place-maps(ng-model="model.location",placeholder="Endereço")
 
-		div(align="right")
-			md-button.md-raised.md-accent(type="submit") Salvar
+  div(align="right")
+    md-button.md-raised.md-accent(type="submit") Salvar

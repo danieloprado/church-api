@@ -1,7 +1,7 @@
 ((angular) => {
   'use strict';
 
-  angular.module('appointment').controller('appointment.formCtrl', [
+  angular.module('appAppointment').controller('appAppointment.formCtrl', [
     '$filter',
     '$location',
     '$routeParams',

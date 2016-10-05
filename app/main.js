@@ -1,4 +1,4 @@
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('app', [
@@ -15,9 +15,8 @@
     'mdPickers',
     'validatorAsync',
 
-    //'appChurch',
-    //'appEvent',
-    'appointment',
+    'appChurch',
+    'appAppointment',
     'appInformative'
   ]).constant('API', '/api');
 

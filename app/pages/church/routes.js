@@ -10,8 +10,8 @@
   function Routes($routeProvider) {
     $routeProvider
       .when('/church', {
-        templateUrl: 'views/church/edit.html',
-        controller: 'church.editCtrl',
+        templateUrl: '/views/pages/church/edit/edit.html',
+        controller: 'appChurch.editCtrl',
       });
   }
 

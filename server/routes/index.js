@@ -3,6 +3,7 @@ const router = require('express').Router(),
 
 router.use('/auth', require('./auth'));
 router.use('/appointment', require('./appointment'));
+router.use('/church', require('./church'));
 router.use('/informative', require('./informative'));
 router.use(errors.notFound);
 
