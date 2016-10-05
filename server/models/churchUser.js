@@ -8,19 +8,6 @@ class ChurchUser extends Model {
     return 'ChurchUser';
   }
 
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      required: ['userId', 'churchId', 'roles'],
-
-      properties: {
-        userId: { type: 'integer' },
-        churchId: { type: 'integer' },
-        roles: { type: 'string', minLength: 1, maxLength: 1000 }
-      }
-    };
-  }
-
   static get relationMappings() {
     return {
 

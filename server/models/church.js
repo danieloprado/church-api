@@ -7,24 +7,6 @@ class Church extends Model {
     return 'Church';
   }
 
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      required: ['name', 'slug'],
-
-      properties: {
-        id: { type: 'integer' },
-        name: { type: 'string', minLength: 1, maxLength: 100 },
-        slug: { type: 'string', minLength: 1, maxLength: 30 },
-        email: { type: 'string', minLength: 1, maxLength: 150 },
-        phone: { type: 'string', minLength: 1, maxLength: 20 },
-        adress: { type: 'string', minLength: 1, maxLength: 150 },
-        latitude: { type: 'number' },
-        longitude: { type: 'number' }
-      }
-    };
-  }
-
   static get relationMappings() {
     return {
 

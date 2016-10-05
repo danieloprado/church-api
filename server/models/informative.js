@@ -7,22 +7,6 @@ class Informative extends Model {
     return 'Informative';
   }
 
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      required: ['title', 'date', 'message', 'creatorId', 'churchId'],
-
-      properties: {
-        id: { type: 'integer' },
-        title: { type: 'string', minLength: 1, maxLength: 100 },
-        date: { type: 'date' },
-        message: { type: 'string' },
-        creatorId: { type: 'integer' },
-        churchId: { type: 'integer' }
-      }
-    };
-  }
-
   static get relationMappings() {
     return {
 
