@@ -1,10 +1,7 @@
 const appointmentRepository = require('repositories/appointment');
 
 function save(model, user) {
-  if (model.id) {
-    return update(model, user);
-  }
-
+  if (model.id) return update(model, user);
   return create(model, user);
 }
 
