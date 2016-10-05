@@ -13,7 +13,6 @@
       template: `<textarea />`,
       link: ($scope, elem, attrs) => {
         elem.css({ display: 'block' });
-
         let changedByEditor = false;
         const simplemde = new SimpleMDE({
           element: elem.find('textarea')[0],

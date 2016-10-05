@@ -18,7 +18,7 @@ form(md-form-validator, ng-submit="$ctrl.submit()")
             input(ng-model="$ctrl.model.date", name="date", required, ui-date-mask, datepicker)
             md-messages(field="date")
 
-      markdown-editor(ng-model="$ctrl.model.message", placeholder="Mensagem")
+      app-markdown-editor(ng-model="$ctrl.model.message", placeholder="Mensagem")
 
   div(layout="row", layout-align="space-between center")
     md-button.md-raised(ng-href="/informativos") Cancelar
