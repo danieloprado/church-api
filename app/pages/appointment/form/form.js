@@ -2,16 +2,15 @@
   'use strict';
 
   angular.module('appAppointment').controller('appAppointment.formCtrl', [
-    '$filter',
     '$location',
     '$routeParams',
-    'moment',
     'UI',
+    'dateHelper',
     'appointmentService',
     FormCtrl
   ]);
 
-  function FormCtrl($filter, $location, $routeParams, moment, UI, service) {
+  function FormCtrl($location, $routeParams, dateHelper, UI, service) {
     const model = this.model = {};
     this.editing = $routeParams.id;
 
@@ -19,25 +18,18 @@
       service.find($routeParams.id).then(data => {
         angular.extend(model, data);
 
-        model.beginTime = moment(data.beginDate).format('HH:mm');
-        model.endTime = moment(data.endDate).format('HH:mm');
+        model.beginTime = dateHelper.getTime(data.beginDate);
+        model.endTime = dateHelper.getTime(data.endDate);
       });
     }
 
-    const toDate = (date, hour) => {
-      const parts = hour.split(':');
 
-      date.setHours(parts[0]);
-      date.setMinutes(parts[1]);
-
-      return date;
-    };
 
     this.submit = () => {
       var data = angular.copy(model);
 
-      data.beginDate = toDate(data.beginDate, data.beginTime);
-      data.endDate = toDate(data.endDate, data.endTime);
+      data.beginDate = dateHelper.merge(data.beginDate, data.beginTime);
+      data.endDate = dateHelper.merge(data.endDate, data.endTime);
 
       UI.Loader(service.save(data)).then(() => {
         UI.Toast('Salvo');

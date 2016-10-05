@@ -33,13 +33,13 @@ form(md-form-validator, ng-submit="$ctrl.submit()", name="eventForm")
         div(flex)
           md-input-container.md-block
             label Término
-            input(ng-model='$ctrl.model.endDate', name='endDate', required, datepicker)
+            input(ng-model='$ctrl.model.endDate', name='endDate', ng-required="$ctrl.model.endTime", datepicker)
             md-messages
 
         div(flex)
           md-input-container.md-block
             label Hora
-            input(ng-model='$ctrl.model.endTime', name="endTime", timepicker, required)
+            input(ng-model='$ctrl.model.endTime', name="endTime", ng-required="$ctrl.model.endDate", timepicker)
             md-messages
 
         //div(flex)

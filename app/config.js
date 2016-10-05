@@ -27,6 +27,7 @@
   function configErrorMessages(mdFormValidatorProvider) {
     mdFormValidatorProvider.setMessage('required', 'Obrigatório');
     mdFormValidatorProvider.setMessage('date', 'Data inválida');
+    mdFormValidatorProvider.setMessage('time', 'Hora inválida');
     mdFormValidatorProvider.setMessage('email', 'Email inválido');
     mdFormValidatorProvider.setMessage('min', 'Deve ter ser no minimo {min}');
     mdFormValidatorProvider.setMessage('max', 'Deve ter ser no máximo {max}');

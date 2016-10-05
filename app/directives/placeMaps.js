@@ -104,7 +104,7 @@
 
     $scope.map = {
       center: angular.copy(initialValue),
-      zoom: 14
+      zoom: 16
     };
 
     $scope.options = {

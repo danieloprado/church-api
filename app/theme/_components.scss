@@ -187,6 +187,11 @@ app-loading>div {
   }
 }
 
+md-card-content>app-place-maps {
+  margin: 20px -30px -30px -30px;
+  width: calc(100% + 60px);
+}
+
 app-place-maps {
   display: block;
   width: 100%;

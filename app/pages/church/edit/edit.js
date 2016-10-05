@@ -23,8 +23,10 @@
 
     this.submit = () => {
       this.model.address = this.location.address;
-      this.model.lat = this.location.lat;
-      this.model.lng = this.location.lng;
+      this.model.latitude = this.location.lat;
+      this.model.longitude = this.location.lng;
+
+      console.log(this.model);
 
       loader(service.save(this.model)).then(() => {
         toast('Informações atualizadas');

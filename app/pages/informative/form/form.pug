@@ -15,7 +15,7 @@ form(md-form-validator, ng-submit="$ctrl.submit()")
         div(flex)
           md-input-container.md-block
             label Dia disponível
-            input(ng-model="$ctrl.model.date", name="date", required, ui-date-mask, datepicker)
+            input(ng-model="$ctrl.model.date", name="date", required, datepicker)
             md-messages(field="date")
 
       app-markdown-editor(ng-model="$ctrl.model.message", placeholder="Mensagem")

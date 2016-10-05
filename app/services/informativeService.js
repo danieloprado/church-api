@@ -6,24 +6,24 @@
       'API',
       '$http',
       '$mdDialog',
-      'parseDates',
+      'dateHelper',
       InformativeService
     ]);
 
-  function InformativeService(API, $http, $mdDialog, parseDates) {
+  function InformativeService(API, $http, $mdDialog, dateHelper) {
 
     const list = () => {
       return $http.get(`${API}/informative`).then((response) => {
-        return response.data.map((item) => parseDates(item));
+        return response.data.map((item) => dateHelper.parseObj(item));
       });
     };
 
     const get = (id) => {
-      return $http.get(`${API}/informative/${id}`).then(res => parseDates(res.data));
+      return $http.get(`${API}/informative/${id}`).then(res => dateHelper.parseObj(res.data));
     };
 
     const save = (model) => {
-      return $http.post(`${API}/informative`, model).then((response) => parseDates(response.data));
+      return $http.post(`${API}/informative`, model).then((response) => dateHelper.parseObj(response.data));
     };
 
     const remove = (id) => {
