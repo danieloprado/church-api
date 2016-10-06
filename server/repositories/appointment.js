@@ -16,4 +16,8 @@ function update(appointment) {
   return appointmentModel.query().patchAndFetchById(appointment.id, appointment);
 }
 
-module.exports = { list, findById, insert, update };
+function remove(id) {
+  return appointmentModel.query().delete().where({ id });
+}
+
+module.exports = { list, findById, insert, update, remove };

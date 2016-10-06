@@ -19,5 +19,13 @@ function update(model, user) {
   });
 }
 
+function remove(id, user) {
+  return appointmentRepository.findById(id).then(appointment => {
+    if (!appointment) throw new Error('not-found');
+    if (appointment.churchId !== user.church.id) throw new Error('access-denied');
 
-module.exports = { save };
+    return appointmentRepository.remove(id);
+  });
+}
+
+module.exports = { save, remove };

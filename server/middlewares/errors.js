@@ -2,11 +2,20 @@ function notFound(req, res, next) { //jshint ignore: line
   return res.status(404).json('Not Found');
 }
 
-function validationErrors(err, req, res, next) {
+function parser(err, req, res, next) {
   if (err.validationError) {
-    console.log(err.message);
     return res.status(400).json(err.message);
   }
+
+  switch (err.message) {
+    case 'not-found':
+      err.status = 404;
+      break;
+    case 'access-denied':
+      err.status = 403;
+      break;
+  }
+
   next(err);
 }
 
@@ -32,7 +41,7 @@ function productionError(err, req, res, next) { //jshint ignore: line
 
 module.exports = {
   notFound,
-  validationErrors,
+  parser,
   developmentError,
   productionError
 };

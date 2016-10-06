@@ -31,7 +31,7 @@ app.use('/api', require('routes'));
 app.get('*', (req, res) => res.sendFile('index.html', { root: publicDir }));
 
 app.use(errors.notFound);
-app.use(errors.validationErrors);
+app.use(errors.parser);
 
 if (config.env === 'development') {
   app.use(errors.developmentError);
