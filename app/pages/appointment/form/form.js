@@ -10,7 +10,7 @@
     FormCtrl
   ]);
 
-  function FormCtrl($location, $routeParams, dateHelper, UI, service) {
+  function FormCtrl($location, $routeParams, UI, dateHelper, service) {
     const model = this.model = {};
     this.editing = $routeParams.id;
 
