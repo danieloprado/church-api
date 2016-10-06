@@ -45,9 +45,7 @@
 
       responseError: function(response) {
         if (response.status === 401) {
-          const deferred = $q.defer();
-          resolveLogin(response, deferred);
-          return deferred.promise;
+          return resolveLogin(response);
         }
 
         return $q.reject(response);

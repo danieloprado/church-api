@@ -15,7 +15,7 @@
     this.editing = $routeParams.id;
 
     if ($routeParams.id) {
-      service.find($routeParams.id).then(data => {
+      UI.Loader(service.find($routeParams.id)).then(data => {
         angular.extend(model, data);
 
         model.beginTime = dateHelper.getTime(data.beginDate);

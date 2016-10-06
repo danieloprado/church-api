@@ -9,4 +9,3 @@
   UI.$inject = ['Loader', 'Toast', 'Confirm'];
 
 })(angular);
-
