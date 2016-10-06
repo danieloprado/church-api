@@ -1,5 +1,5 @@
 function notFound(req, res, next) {
-  var err = new Error("not found");
+  var err = new Error('not found');
   err.status = 404;
   next(err);
 }
@@ -12,7 +12,7 @@ function validationErrors(err, req, res, next) {
   next(err);
 }
 
-function developmentError(err, req, res, next) {
+function developmentError(err, req, res, next) { //jshint ignore: line
   console.error(err.status || 500);
   console.error(err.message);
   console.error(err.stack);
@@ -25,7 +25,7 @@ function developmentError(err, req, res, next) {
   });
 }
 
-function productionError(err, req, res, next) {
+function productionError(err, req, res, next) { //jshint ignore: line
   res.status(err.status || 500).render('error', {
     message: err.message,
     error: {}
