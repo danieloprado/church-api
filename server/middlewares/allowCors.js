@@ -5,4 +5,3 @@ module.exports = function allowCors(req, res, next) {
   res.header('Access-Control-Expose-Headers', 'X-Token');
   next();
 };
-

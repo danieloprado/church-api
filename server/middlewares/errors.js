@@ -1,7 +1,5 @@
-function notFound(req, res, next) {
-  var err = new Error('not found');
-  err.status = 404;
-  next(err);
+function notFound(req, res, next) { //jshint ignore: line
+  return res.status(404).json('Not Found');
 }
 
 function validationErrors(err, req, res, next) {
