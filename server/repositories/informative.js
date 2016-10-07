@@ -16,4 +16,8 @@ function update(informative) {
   return informativeModel.query().patchAndFetchById(informative.id, informative);
 }
 
-module.exports = { list, findById, insert, update };
+function remove(id) {
+  return informativeModel.query().delete().where({ id });
+}
+
+module.exports = { list, findById, insert, update, remove };

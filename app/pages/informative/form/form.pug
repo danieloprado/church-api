@@ -1,5 +1,5 @@
-app-title(ng-if="!editing") Novo Informativo
-app-title(ng-if="editing") Editar Informativo
+app-title(ng-if="!$ctrl.editing") Novo Informativo
+app-title(ng-if="$ctrl.editing") Editar Informativo
 
 form(md-form-validator, ng-submit="$ctrl.submit()")
   md-card
@@ -17,6 +17,12 @@ form(md-form-validator, ng-submit="$ctrl.submit()")
             label Dia disponível
             input(ng-model="$ctrl.model.date", name="date", required, datepicker)
             md-messages(field="date")
+
+        div(flex)
+          md-input-container.md-block
+            label Hora
+            input(ng-model="$ctrl.model.time", name="time", required, timepicker)
+            md-messages(field="time")
 
       app-markdown-editor(ng-model="$ctrl.model.message", placeholder="Mensagem")
 

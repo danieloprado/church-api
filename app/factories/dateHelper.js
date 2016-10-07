@@ -33,7 +33,7 @@
     }
 
     function getTime(date) {
-      return moment(date.beginDate).format('HH:mm');
+      return moment(date).format('HH:mm');
     }
 
     return { merge, parseObj, getTime };

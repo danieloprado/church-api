@@ -26,12 +26,10 @@
 
 
     this.submit = () => {
-      var data = angular.copy(model);
+      this.model.beginDate = dateHelper.merge(this.model.beginDate, this.model.beginTime);
+      this.model.endDate = dateHelper.merge(this.model.endDate, this.model.endTime);
 
-      data.beginDate = dateHelper.merge(data.beginDate, data.beginTime);
-      data.endDate = dateHelper.merge(data.endDate, data.endTime);
-
-      UI.Loader(service.save(data)).then(() => {
+      UI.Loader(service.save(this.model)).then(() => {
         UI.Toast('Salvo');
         $location.path('/agenda');
       }).catch(UI.Toast.httpHandler);

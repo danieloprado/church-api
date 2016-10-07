@@ -22,7 +22,7 @@
     };
 
     const remove = (id) => {
-      return $http.post(`${API}/appointment/delete`, { id });
+      return $http.delete(`${API}/appointment/${id}`);
     };
 
     return { list, find, save, remove };

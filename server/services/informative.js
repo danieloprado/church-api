@@ -20,4 +20,13 @@ function update(model, user) {
   });
 }
 
-module.exports = { save };
+function remove(id, user) {
+  return informativeRepository.findById(id).then(appointment => {
+    if (!appointment) throw new Error('not-found');
+    if (appointment.churchId !== user.church.id) throw new Error('access-denied');
+
+    return informativeRepository.remove(id);
+  });
+}
+
+module.exports = { save, remove };

@@ -5,18 +5,20 @@
     '$routeParams',
     '$location',
     'UI',
+    'dateHelper',
     'informativeService',
     FormCtrl
   ]);
 
-  function FormCtrl($routeParams, $location, UI, informativeService) {
+  function FormCtrl($routeParams, $location, UI, dateHelper, informativeService) {
     this.model = {};
-    this.editing = false;
+    this.editing = $routeParams.id;
 
     if ($routeParams.id) {
       UI.Loader(informativeService.get($routeParams.id)).then(informative => {
         this.model = informative;
-        this.editing = true;
+        console.log(informative.date);
+        this.model.time = dateHelper.getTime(informative.date);
       });
     }
 
@@ -26,6 +28,8 @@
     };
 
     this.submit = () => {
+      this.model.date = dateHelper.merge(this.model.date, this.model.time);
+
       UI.Loader(informativeService.save(this.model)).then(() => {
         UI.Toast('Salvo');
         $location.path('/informativos');

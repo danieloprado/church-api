@@ -5,7 +5,7 @@ const schema = Joi.object().keys({
   title: Joi.string().required().min(3).max(100),
   description: Joi.string().max(1000).allow(null),
   beginDate: Joi.date().required(),
-  endDate: Joi.date().required().min(Joi.ref('beginDate'))
+  endDate: Joi.date().min(Joi.ref('beginDate'))
 });
 
 module.exports = model => new Promise((resolve, reject) => {

@@ -24,7 +24,7 @@
         if (error.isConfirm) return;
 
         this.appointments.push(appointment);
-        UI.Toast(`Não foi possível apagar o evento **${appointment.title}**`);
+        UI.Toast('Não foi possível apagar o evento');
       });
     };
   }
