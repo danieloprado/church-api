@@ -21,7 +21,7 @@
         this.informatives.splice(index, 1);
 
         informativeService.remove(informative.id).catch(() => {
-          UI.Toast(`Não foi possível apagar o informativo **${informative.title}**`);
+          UI.Toast(`Não foi possível apagar o informativo`);
           this.informatives.push(informative);
         });
 
