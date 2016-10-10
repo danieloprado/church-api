@@ -17,7 +17,7 @@ function generate(user, churchUser) {
       resolve(jwt.sign(tokenData, auth.secret));
     }
 
-    tokenData.roles = churchUser.roles.split(',');
+    tokenData.roles = churchUser.roles ? churchUser.roles.split(',') : [];
     tokenData.church = {
       id: churchUser.church.id,
       name: churchUser.church.name,

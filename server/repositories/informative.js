@@ -4,6 +4,13 @@ function list(churchId) {
   return informativeModel.query().where({ churchId });
 }
 
+function listByChurchSlug(slug) {
+  return informativeModel.query()
+    .select('Informative.*')
+    .join('Church', 'Informative.churchId', 'Church.id')
+    .where('Church.slug', '=', slug);
+}
+
 function findById(id) {
   return informativeModel.query().where({ id }).first();
 }
@@ -20,4 +27,4 @@ function remove(id) {
   return informativeModel.query().delete().where({ id });
 }
 
-module.exports = { list, findById, insert, update, remove };
+module.exports = { list, listByChurchSlug, findById, insert, update, remove };
