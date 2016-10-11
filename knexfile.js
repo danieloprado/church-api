@@ -4,8 +4,7 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './db/dev.db'
-    },
-    debug: true
+    }
   },
 
   staging: {
