@@ -28,6 +28,7 @@
     };
 
     this.submit = () => {
+      this.model.typeId = 1;
       this.model.date = dateHelper.merge(this.model.date, this.model.time);
 
       UI.Loader(informativeService.save(this.model)).then(() => {
