@@ -13,4 +13,5 @@ module.exports = model => new Promise((resolve, reject) => {
     if (err) reject({ validationError: true, message: err.details });
     resolve(value);
   });
+
 });

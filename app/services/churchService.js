@@ -18,7 +18,8 @@
     const save = (model) => $http.post(endpoints.current, model);
 
     return {
-      current, save
+      current,
+      save
     };
   }
 
