@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.createTable('InformativeType', function(table) {
-    table.increments('id').primary();
+    table.integer('id').notNullable().unsigned().primary();
     table.string('name', 100).notNullable();
   }).createTable('Informative', function(table) {
     table.increments('id').primary();
