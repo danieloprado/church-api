@@ -5,12 +5,13 @@
     .factory('informativeService', [
       'API',
       '$http',
+      '$q',
       '$mdDialog',
       'dateHelper',
       InformativeService
     ]);
 
-  function InformativeService(API, $http, $mdDialog, dateHelper) {
+  function InformativeService(API, $http, $q, $mdDialog, dateHelper) {
 
     const list = () => {
       return $http.get(`${API}/informative`).then((response) => {
@@ -30,11 +31,19 @@
       return $http.delete(`${API}/informative/${id}`);
     };
 
+    const types = () => {
+      return $q.resolve([
+        { id: 1, name: 'Igreja' },
+        { id: 2, name: 'Célula' }
+      ]);
+    };
+
     return {
       list,
       get,
       save,
-      remove
+      remove,
+      types
     };
   }
 

@@ -23,8 +23,6 @@
       });
     }
 
-
-
     this.submit = () => {
       this.model.beginDate = dateHelper.merge(this.model.beginDate, this.model.beginTime);
       this.model.endDate = dateHelper.merge(this.model.endDate, this.model.endTime);

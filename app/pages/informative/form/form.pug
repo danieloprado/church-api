@@ -12,6 +12,16 @@ form(md-form-validator, ng-submit="$ctrl.submit()")
             input(ng-model='$ctrl.model.title', name='title', required)
             md-messages
 
+      div(layout="column",layout-gt-xs="row")
+        div(flex)
+          md-input-container.md-block
+            label Tipo
+            md-select(ng-model='$ctrl.model.typeId', name="typeId",required)
+              md-option(value="") Selecione...
+              md-option(ng-repeat="type in $ctrl.types", ng-value='type.id')
+                | {{type.name}}
+            md-messages(field="typeId")
+
         div(flex)
           md-input-container.md-block
             label Dia disponível
