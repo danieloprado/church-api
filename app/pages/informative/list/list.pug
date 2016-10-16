@@ -32,7 +32,7 @@ md-card
           th(md-column,width="120")
 
       tbody(md-body)
-        tr(md-row, ng-repeat="informative in $ctrl.informatives | filter:query.filter | orderBy:query.order")
+        tr(md-row, ng-repeat="informative in $ctrl.informatives | filter:$ctrl.query.filter | orderBy:query.order")
           td(md-cell) {{::informative.title}}
           td(md-cell) {{::informative.typeId | informativeType}}
           td(md-cell) {{::informative.date | date}}
