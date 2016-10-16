@@ -10,10 +10,15 @@
 
   function ListCtrl($scope, UI, informativeService) {
     this.selected = [];
+    this.types = [];
     this.query = { order: '-date' };
 
     this.dataPromise = informativeService.list().then((data) => {
       this.informatives = data;
+    });
+
+    informativeService.types().then(data => {
+      this.types = data;
     });
 
     this.delete = ($event, informative, index) => {

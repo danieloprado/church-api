@@ -1,28 +1,46 @@
 app-title Informativos
 
 md-button.md-fab.md-fab-bottom-right(href="/informativos/novo")
-	md-icon(md-svg-icon="plus",size=32)
+  md-icon(md-svg-icon="plus",size=32)
 
 md-card
+  md-card-content(layout-padding)
 
-	md-table-container
+    div(layout="column",layout-gt-xs="row")
+      div(flex="70")
+        md-input-container.md-block
+          label Titulo
+          md-icon(md-svg-icon="magnify")
+          input(ng-model='$ctrl.query.filter.title', name='title')
+      div(flex="30")
+        md-input-container.md-block
+          label Tipo
+          md-select(ng-model='$ctrl.query.filter.typeId', name="typeId")
+            md-option(value="") Todos
+            md-option(ng-repeat="type in $ctrl.types", ng-value='type.id')
+              | {{type.name}}
 
-		table(md-table, md-progress="$ctrl.dataPromise",)
-			thead(md-head, md-order="$ctrl.query.order")
-				tr(md-row)
-					th(md-column, md-order-by="title") Titulo
-					th(md-column, md-order-by="date") Dia
-					th(md-column,width="120")
 
-			tbody(md-body)
-				tr(md-row, ng-repeat="informative in $ctrl.informatives | filter:query.filter | orderBy:query.order")
-					td(md-cell) {{informative.title}}
-					td(md-cell) {{informative.date | date}}
-					td.md-cell-buttons(md-cell)
-						md-button.md-icon-button(href="/informativos/{{informative.id}}/editar")
-							md-icon(md-svg-icon="pencil")
-						md-button.md-icon-button(ng-click="$ctrl.delete($event, informative, $index)")
-							md-icon(md-svg-icon="delete")
+  md-table-container
 
-		div.no-record(ng-show="$ctrl.informatives.length == 0",align="center")
-			| Nenhum informativo criado
+    table(md-table, md-progress="$ctrl.dataPromise",)
+      thead(md-head, md-order="$ctrl.query.order")
+        tr(md-row)
+          th(md-column, md-order-by="title") Titulo
+          th(md-column, md-order-by="typeId") Tipo
+          th(md-column, md-order-by="date") Dia
+          th(md-column,width="120")
+
+      tbody(md-body)
+        tr(md-row, ng-repeat="informative in $ctrl.informatives | filter:query.filter | orderBy:query.order")
+          td(md-cell) {{::informative.title}}
+          td(md-cell) {{::informative.typeId | informativeType}}
+          td(md-cell) {{::informative.date | date}}
+          td.md-cell-buttons(md-cell)
+            md-button.md-icon-button(href="/informativos/{{informative.id}}/editar")
+              md-icon(md-svg-icon="pencil")
+            md-button.md-icon-button(ng-click="$ctrl.delete($event, informative, $index)")
+              md-icon(md-svg-icon="delete")
+
+    div.no-record(ng-show="$ctrl.informatives.length == 0",align="center")
+      | Nenhum informativo criado
