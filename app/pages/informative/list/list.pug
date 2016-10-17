@@ -8,15 +8,13 @@ md-card
 
     div(layout="column",layout-gt-xs="row")
       div(flex="70")
-        md-input-container.md-block
-          label Titulo
+        md-input-container.md-block.m-t-none(md-no-float="")
           md-icon(md-svg-icon="magnify")
-          input(ng-model='$ctrl.query.filter.title', name='title')
+          input(ng-model='$ctrl.query.filter.title', name='title', placeholder="Titulo")
       div(flex="30")
-        md-input-container.md-block
-          label Tipo
-          md-select(ng-model='$ctrl.query.filter.typeId', name="typeId")
-            md-option(value="") Todos
+        md-input-container.md-block.m-t-none(md-no-float="" )
+          md-select(ng-model='$ctrl.query.filter.typeId', name="typeId",  placeholder="Tipos")
+            md-option(value="") Tipos
             md-option(ng-repeat="type in $ctrl.types", ng-value='type.id')
               | {{type.name}}
 
